@@ -18,6 +18,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Building Docker Image') {
+            steps {
+                sh 'docker build -t "$registry:$BUILD_NUMBER" .'
+            }
+       }
 
         stage('test build') {
             steps {
