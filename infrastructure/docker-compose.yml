@@ -1,0 +1,29 @@
+services:
+  jenkins:
+    image: jenkins/jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - /home/shebl/Data/IT/web developer/code/testing/jenkins/data:/var/jenkins_home
+    networks:
+      jenkins:
+        ipv4_address: 172.24.0.3  
+  agent:
+    image: jenkins/slave15
+    build: 
+      context: .
+      dockerfile: ./SlaveDockerFile 
+    networks:
+      jenkins:
+        ipv4_address: 172.24.0.2       
+
+
+
+networks:
+  jenkins:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.24.0.0/24
+         gateway: 172.24.0.1

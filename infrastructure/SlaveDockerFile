@@ -1,0 +1,14 @@
+FROM node:16
+
+
+COPY node_ubuntu.sh  ./
+
+RUN /bin/bash ./node_ubuntu.sh
+RUN chmod +x ./node_ubuntu.sh
+
+
+RUN mkdir /var/run/sshd 
+
+CMD ["/usr/sbin/sshd", "-D"]
+
+
