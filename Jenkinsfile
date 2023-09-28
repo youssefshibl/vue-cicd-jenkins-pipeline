@@ -9,8 +9,6 @@ pipeline {
         stage('install dependencies') {
             steps {  
                sh 'npm install'
-               sh 'npm run serve -- --port 3000'
-
             }
         }
         stage('build'){
