@@ -3,6 +3,7 @@ pipeline {
     environment {
         CI = 'true'
         PORT = 3000
+        registry = "youssefshebl/vueapp"
     }
 
     stages {
