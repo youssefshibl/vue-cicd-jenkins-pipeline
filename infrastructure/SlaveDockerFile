@@ -9,6 +9,13 @@ RUN chmod +x ./node_ubuntu.sh
 
 RUN mkdir /var/run/sshd 
 
+RUN curl -fsSL https://test.docker.com -o test-docker.sh
+RUN chmod +x test-docker.sh
+RUN /bin/bash test-docker.sh
+
+# add docker group to jenkins user
+RUN usermod -aG docker jenkins
+
 CMD ["/usr/sbin/sshd", "-D"]
 
 

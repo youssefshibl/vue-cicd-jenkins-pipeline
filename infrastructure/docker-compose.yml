@@ -14,6 +14,8 @@ services:
     build: 
       context: .
       dockerfile: ./SlaveDockerFile 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  
     networks:
       jenkins:
         ipv4_address: 172.24.0.2       
