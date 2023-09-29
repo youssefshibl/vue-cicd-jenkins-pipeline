@@ -5,7 +5,7 @@ services:
       - 8080:8080
       - 50000:50000
     volumes:
-      - /home/shebl/Data/IT/web developer/code/testing/jenkins/data:/var/jenkins_home
+      - ./data:/var/jenkins_home
     networks:
       jenkins:
         ipv4_address: 172.24.0.3  
