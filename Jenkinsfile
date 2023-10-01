@@ -53,7 +53,6 @@ pipeline {
         stage('disable second machine in nginx load balancer') {
             steps {
                 sh '''#!/bin/bash
-                   # connected to nginx contianer and uncommit line 6 , commit line 7 and reload nginx config
                     docker exec  nginx_cicd bash -c 'echo "$(sed  '9s/^#//' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf'
                     docker exec  nginx_cicd bash -c 'echo "$(sed  '10s/^/#/' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                        
                    '''
@@ -69,7 +68,16 @@ pipeline {
                     docker run -d --name app2 --network infrastructure_jenkins --ip 172.24.0.6 youssefshebl/vueapp                  
                     '''
             }
-        }        
+        }  
+        stage('return sencond machine in nginx load balancer') {
+            steps {
+                sh '''#!/bin/bash
+                  
+                    docker exec  nginx_cicd bash -c 'echo "$(sed  '10s/^#//' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                        
+                   '''
+            }
+        }       
+
         // stage('test build') {
         //     steps {
         //         sh 'npm run serve -- --port ${PORT} -s dist'
