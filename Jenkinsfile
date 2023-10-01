@@ -36,7 +36,8 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                    # connected to nginx contianer and commit line 6 and reload nginx config
-                   docker exec -it nginx_cicd bash -c "sed -i '6s/^/#/' /etc/nginx/nginx.conf && nginx -s reload"            
+                   docker exec -it nginx_cicd bash -c 'echo "$(sed  "9s/m/#/" /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload"'
+                               
                    '''
             }
         }
@@ -55,8 +56,8 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                    # connected to nginx contianer and uncommit line 6 , commit line 7 and reload nginx config
-                   docker exec -it nginx_cicd bash -c "sed -i '6s/^#//' /etc/nginx/nginx.conf && \
-                   sed -i '7s/^/#/' /etc/nginx/nginx.conf && nginx -s reload"            
+                    docker exec -it nginx_cicd bash -c 'echo "$(sed  '9s/^#//' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf'
+                    docker exec -it nginx_cicd bash -c 'echo "$(sed  '10s/m/#/' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload"'                        
                    '''
             }
         }
