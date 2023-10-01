@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Building Docker Image') {
             steps {
-                sh 'docker build -t "$registry:$BUILD_NUMBER" .'
+                sh 'docker build -t "$registry" .'
             }
         }
         stage('Docker Push') {
@@ -28,7 +28,7 @@ pipeline {
 
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                    sh 'docker push "$registry:$BUILD_NUMBER"'
+                    sh 'docker push "$registry"'
                 }
             }
         }
