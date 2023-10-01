@@ -66,7 +66,7 @@ pipeline {
                     docker container stop app2
                     docker container rm app1
                     docker pull youssefshebl/vueapp
-                    docker run -d --name app2 --network jenkins --ip 172.24.0.6 youssefshebl/vueapp                  
+                    docker run -d --name app2 --network infrastructure_jenkins --ip 172.24.0.6 youssefshebl/vueapp                  
                     '''
             }
         }        
