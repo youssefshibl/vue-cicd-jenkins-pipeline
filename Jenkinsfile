@@ -64,7 +64,7 @@ pipeline {
                 sh '''#!/bin/bash
                     # update first app container from docker compose file 
                     docker container stop app2
-                    docker container rm app1
+                    docker container rm app2
                     docker pull youssefshebl/vueapp
                     docker run -d --name app2 --network infrastructure_jenkins --ip 172.24.0.6 youssefshebl/vueapp                  
                     '''
