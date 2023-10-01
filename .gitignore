@@ -23,3 +23,6 @@ pnpm-debug.log*
 *.sw?
 
 /infrastructure/data
+
+.ssh
+ssh.sh
