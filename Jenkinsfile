@@ -35,7 +35,7 @@ pipeline {
         stage('disable first machine in nginx load balancer') {
             steps {
                 sh '''#!/bin/bash
-                   docker exec -it nginx_cicd bash -c 'echo "$(sed  "9s/^/#/" /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                               
+                   docker exec  nginx_cicd bash -c 'echo "$(sed  "9s/^/#/" /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                               
                    '''
             }
         }
@@ -54,8 +54,8 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                    # connected to nginx contianer and uncommit line 6 , commit line 7 and reload nginx config
-                    docker exec -it nginx_cicd bash -c 'echo "$(sed  '9s/^#//' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf'
-                    docker exec -it nginx_cicd bash -c 'echo "$(sed  '10s/^/#/' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                        
+                    docker exec  nginx_cicd bash -c 'echo "$(sed  '9s/^#//' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf'
+                    docker exec  nginx_cicd bash -c 'echo "$(sed  '10s/^/#/' /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf && nginx -s reload'                        
                    '''
             }
         }
