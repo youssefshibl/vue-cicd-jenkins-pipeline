@@ -1,9 +1,9 @@
 ![Untitled-2023-08-22-15341](https://github.com/youssefshibl/vue-cicd-jenkins-pipeline/assets/63800183/32823b09-45df-4c7a-b6c4-c0e97086ad42)
 
 
-# vue-cicd-jenkins-pipeline
+# 🚀 vue-cicd-jenkins-pipeline
 
-make vue git repo with jenkins pipeline which will build by install dependencies and run unit test and build the project and build new docker image from build then push image to docker hub and configure nginx container to disable one of web app container until update app docker image and then switch to new container see architecture diagram in repo 
+🔋 make vue git repo with jenkins pipeline which will build by install dependencies and run unit test and build the project and build new docker image from build then push image to docker hub and configure nginx container to disable one of web app container until update app docker image and then switch to new container see architecture diagram in repo 
 
 - jenkins master using scm to check every two minutes for any changes in repo and if there are change start pipeline job
 
@@ -45,7 +45,7 @@ http {
    }
 }
 ```
-disable one of app container
+🔋 disable one of app container
 ```conf
 worker_processes 2;
 
@@ -70,7 +70,7 @@ http {
    }
 }
 ```
-then updat app docker image of this app1 and disable app2 
+🔋 then updat app docker image of this app1 and disable app2 
 ```conf
 worker_processes 2;
 
@@ -95,14 +95,14 @@ http {
    }
 }
 ```
-the enable app2 on nginx container , then this case two container is runing 
+🔋 the enable app2 on nginx container , then this case two container is runing 
 
 ![Screenshot from 2023-10-04 21-36-11](https://github.com/youssefshibl/vue-cicd-jenkins-pipeline/assets/63800183/33d726ca-34d5-4065-b8fb-6abca661351d)
 
 
-## How start infrastructure
-+ i make file called infrastructur which have docker-compose file to start jenkins master and jenkins slave and nginx container and app1 and app2 container , nginx config of load balancer  , node_ubuntu.sh script , this script which make node js container commpitable as jenkins slave and communicate with jenkins master and run any job in jenkins master
+## 📌 How start infrastructure
++ ♻️ i make file called infrastructur which have docker-compose file to start jenkins master and jenkins slave and nginx container and app1 and app2 container , nginx config of load balancer  , node_ubuntu.sh script , this script which make node js container commpitable as jenkins slave and communicate with jenkins master and run any job in jenkins master
 
-+ after run this docker compose file you will go to `localhost:8000` this will login to jenkins master , then you should use configuation as code plugin to import jenkins.yaml file which containe all jenkins credential and job and pipeline job and jenkins slave agent configuration
++ ♻️ after run this docker compose file you will go to `localhost:8000` this will login to jenkins master , then you should use configuation as code plugin to import jenkins.yaml file which containe all jenkins credential and job and pipeline job and jenkins slave agent configuration
 
 ![Screenshot from 2023-10-04 21-54-50](https://github.com/youssefshibl/vue-cicd-jenkins-pipeline/assets/63800183/e1231d76-37b3-4277-a7a4-8e488f5222d0)
